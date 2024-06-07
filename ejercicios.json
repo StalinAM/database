@@ -1,0 +1,88 @@
+{
+  "clinica1": {
+    "paciente": {
+      "codigo": 1,
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "direccion": "Calle Falsa 123",
+      "poblacion": "Madrid",
+      "provincia": "Madrid",
+      "codigo_postal": "28080",
+      "telefono": "912345678",
+      "fecha_nacimiento": "1980-05-15",
+      "ingreso": [
+        {
+          "codigo_ingreso": 1001,
+          "numero_habitacion": 205,
+          "cama": 1,
+          "fecha_ingreso": "2024-01-15",
+          "medico": {
+            "codigo": 501,
+            "nombre": "Laura",
+            "apellidos": "Martínez Ruiz",
+            "telefono": "912345679",
+            "especialidad": "Cardiología"
+          }
+        },
+        {
+          "codigo_ingreso": 1002,
+          "numero_habitacion": 207,
+          "cama": 2,
+          "fecha_ingreso": "2024-03-20",
+          "medico": {
+            "codigo": 502,
+            "nombre": "Carlos",
+            "apellidos": "López Fernández",
+            "telefono": "912345680",
+            "especialidad": "Neurología"
+          }
+        }
+      ]
+    }
+  },
+  "clinica2": {
+    "paciente": {
+      "codigo": 1,
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "direccion": "Calle Falsa 123",
+      "poblacion": "Madrid",
+      "provincia": "Madrid",
+      "codigo_postal": "28080",
+      "telefono": "912345678",
+      "fecha_nacimiento": "1980-05-15",
+      "ingreso": [
+        {
+          "codigo_ingreso": 1001,
+          "numero_habitacion": 205,
+          "cama": 1,
+          "fecha_ingreso": "2024-01-15",
+          "codigo_medico": 501
+        },
+        {
+          "codigo_ingreso": 1002,
+          "numero_habitacion": 207,
+          "cama": 2,
+          "fecha_ingreso": "2024-03-20",
+          "codigo_medico": 502
+        }
+      ]
+    },
+    "medicos": [
+      {
+        "codigo": 501,
+        "nombre": "Laura",
+        "apellidos": "Martínez Ruiz",
+        "telefono": "912345679",
+        "especialidad": "Cardiología"
+      },
+      {
+        "codigo": 502,
+        "nombre": "Carlos",
+        "apellidos": "López Fernández",
+        "telefono": "912345680",
+        "especialidad": "Neurología"
+      }
+    ]
+  }
+}
