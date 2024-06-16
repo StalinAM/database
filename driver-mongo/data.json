@@ -1,26 +1,22 @@
-{
-  "users": [
-    {
-      "name": "John Doe",
-      "age": 30,
-      "email": "johndoe@example.com"
-    },
-    {
-      "name": "Jane Smith",
-      "age": 25,
-      "email": "janesmith@example.com"
+[
+  {
+    "nombre": "Juan Perez",
+    "edad": 30,
+    "correo": "juan.perez@example.com",
+    "direccion": {
+      "calle": "Calle Falsa 123",
+      "ciudad": "Ciudad Falsa",
+      "pais": "Pais Falso"
     }
-  ],
-  "products": [
-    {
-      "name": "Product 1",
-      "price": 10.99,
-      "category": "Electronics"
-    },
-    {
-      "name": "Product 2",
-      "price": 19.99,
-      "category": "Clothing"
+  },
+  {
+    "nombre": "Maria Lopez",
+    "edad": 25,
+    "correo": "maria.lopez@example.com",
+    "direccion": {
+      "calle": "Avenida Siempreviva 742",
+      "ciudad": "Springfield",
+      "pais": "USA"
     }
-  ]
-}
+  }
+]
