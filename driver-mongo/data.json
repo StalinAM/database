@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "name": "John Doe",
+      "age": 30,
+      "email": "johndoe@example.com"
+    },
+    {
+      "name": "Jane Smith",
+      "age": 25,
+      "email": "janesmith@example.com"
+    }
+  ],
+  "products": [
+    {
+      "name": "Product 1",
+      "price": 10.99,
+      "category": "Electronics"
+    },
+    {
+      "name": "Product 2",
+      "price": 19.99,
+      "category": "Clothing"
+    }
+  ]
+}
