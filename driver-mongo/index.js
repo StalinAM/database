@@ -11,17 +11,20 @@ const getData = async () => {
   }
 }
 
-const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
-// console.log(data)
+const data = JSON.parse(
+  fs.readFileSync('personajes_marvel_subir.json', 'utf-8')
+)
+// console.log(data.results)
 const insertData = async () => {
   try {
     const connection = await getConnection()
-    const result = await connection.collection('collection').insertMany(data)
+    const result = await connection
+      .collection('collection')
+      .insertMany(data.results)
     console.log(result)
   } catch (error) {
     console.error(error)
   }
 }
 
-getData()
-// insertData()
+insertData()
