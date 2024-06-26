@@ -11,5 +11,5 @@
 
 | Comandos            | Descripcion              |
 | ------------------- | ------------------------ |
-| `node init -y`      | Iniciar proyecto de node |
+| `node init -y`      | Iniciar proyecto de node. |
 | `npm install redis` | Agregar redis a node     |
