@@ -13,5 +13,5 @@ client
     // Your code here
   })
   .catch((error) => {
-    console.error('Error connecting to Cassandra', error)
+    console.error('Error conectando a casandra', error)
   })
