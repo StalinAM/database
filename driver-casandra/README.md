@@ -2,10 +2,11 @@
 
 ## Docker
 
-| Comandos                                                   | Descripcion                   |
-| ---------------------------------------------------------- | ----------------------------- |
-| `docker run -d --name casandra-node -p 9042:9042 casandra` | Crear contenedor con casandra |
-| `docker exec -it casandra-node bash`                       | Ver las claves y valores      |
+| Comandos                                                                             | Descripcion                   |
+| ------------------------------------------------------------------------------------ | ----------------------------- |
+| `docker run -d --name casandra-node -p 9042:9042 casandra`                           | Crear contenedor con casandra |
+| `docker exec -it casandra-node bash`                                                 | Ver las claves y valores      |
+| `$ docker run --name some-cassandra2 -d -e CASSANDRA_SEEDS=some-cassandra cassandra` | Ver las claves y valores      |
 
 ## Node
 
