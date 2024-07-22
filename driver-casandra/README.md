@@ -8,15 +8,6 @@
 | `docker exec -it casandra-node bash`                                                 | Ver las claves y valores      |
 | `$ docker run --name some-cassandra2 -d -e CASSANDRA_SEEDS=some-cassandra cassandra` | Ver las claves y valores      |
 
-## Node
-
-| Comandos                       | Descripcion              |
-| ------------------------------ | ------------------------ |
-| `node init -y`                 | Iniciar proyecto de node |
-| `npm install cassandra-driver` | Agregar redis a node     |
-
-# Comando docker
-
 `docker run -d --name cass_seed cassandra`
 
 ## Inspeccionar puerto docker
@@ -27,7 +18,7 @@ IPAddress: ipdel servicio en docker
 `docker run -d --name cass1 -e CASSANDRA_SEEDS=IPAddress cassandra`
 `docker exec -it cass1 bash`
 
-- Entrar a cassandra
+- Entrar terminal cassandra
   `cqlsh`
 
 - Entrar al keyspace
@@ -44,19 +35,17 @@ IPAddress: ipdel servicio en docker
   `nodetool getseeds`
 
 - ver donde se encunetra replicado el dato
-```nodetool getendpoints nombre_keyspace nombre_tabla nombre_pk```
+  `nodetool getendpoints nombre_keyspace nombre_tabla nombre_pk`
 
 `docker run -d --name cass1`
 
-## KEYSPACE
+## Keyspace
 
 ```sql
 CREATE KEYSPACE ks_cancionero
 WITH REPLICATION = {
 'class' : 'SimpleStrategy', 'replication_factor' : 2};
 ```
-
-Datos
 
 ## Crear tabla
 
@@ -103,3 +92,10 @@ anio_album,sexo_artista)
 
 values('Album1', 'Salsa', 'Joji', 2014, true);
 ```
+
+## Node
+
+| Comandos                       | Descripcion              |
+| ------------------------------ | ------------------------ |
+| `node init -y`                 | Iniciar proyecto de node |
+| `npm install cassandra-driver` | Agregar redis a node     |
