@@ -5,11 +5,11 @@
 - Cluster con replicacion.
 
 ```sh
-docker volumen create --name=cassandra_seed_data
+docker volume create --name=cassandra_seed_data
 ```
 
 ```bash
-docker volumen --name=cassandra_node1_data
+docker volume create --name=cassandra_node1_data
 ```
 
 ```bash
