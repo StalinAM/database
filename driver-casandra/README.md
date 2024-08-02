@@ -2,15 +2,25 @@
 
 ## Docker
 
-| Comandos                                                                             | Descripcion                   |
-| ------------------------------------------------------------------------------------ | ----------------------------- |
-| `docker run -d --name casandra-node -p 9042:9042 casandra`                           | Crear contenedor con casandra |
-| `docker exec -it casandra-node bash`                                                 | Ver las claves y valores      |
-| `$ docker run --name some-cassandra2 -d -e CASSANDRA_SEEDS=some-cassandra cassandra` | Ver las claves y valores      |
+- Cluster con replicacion.
 
-`docker run -d --name cass_seed cassandra`
+```sh
+docker volumen create --name=cassandra_seed_data
+```
 
-## Inspeccionar puerto docker
+```bash
+docker volumen --name=cassandra_node1_data
+```
+
+```bash
+docker run -d --name cass_sedd -v cassandra_seed_data:/var/lib/cassandra -p 9042:9042 -p 7000:7000 -p 7001:7001 cassandra
+```
+
+```bash
+docker run -d --name cass_1 -v cassandra_node1_data:/var/lib/cassandra -e CASSANDRA_SEEDS="$(docker inpect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cass_seed)" cassandra
+```
+
+- Inspeccionar puerto docker
 
 `docker inspect cass_seed`
 IPAddress: ipdel servicio en docker
