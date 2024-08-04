@@ -2,30 +2,51 @@
 
 ## Docker
 
-- Cluster con replicacion.
+### Cluster con replicacion.
 
-```sh
-docker volume create --name=cassandra_seed_data
+#### Creacion volumenes
+
+```bash
+docker volume create --name=vol1
 ```
 
 ```bash
-docker volume create --name=cassandra_node1_data
+docker volume create --name=vol2
 ```
 
 ```bash
-docker run -d --name cass_sedd -v cassandra_seed_data:/var/lib/cassandra -p 9042:9042 -p 7000:7000 -p 7001:7001 cassandra
+docker run -d --name node_sedd -v vol1:/etc/cassandra -e CASSANDRA_DC=QUITO -e CASSANDRA_RACK=rack1 -p 9042:9042 -p 7000:7000 -p 7001:7001 cassandra
 ```
 
 ```bash
-docker run -d --name cass_1 -v cassandra_node1_data:/var/lib/cassandra -e CASSANDRA_SEEDS="$(docker inpect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cass_seed)" cassandra
+docker run -d --name node1 -v vol2:/etc/cassandra -e CASSANDRA_DC=GUAYAQUIL -e CASSANDRA_RACK=rack2 -e CASSANDRA_SEEDS="$(docker inpect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node_seed)" cassandra
 ```
+
+#### Modificar datacenter y rack.
+
+Ingresar a la ruta `\\wsl.localhost\docker-desktop-data\data\docker\volumes\vol1\_data` editar los archivos:
+
+- `cassandra-rackdc` los parametros `dc` y`rack`
+- `cassandra` cambiar `endpoint_snitch: GossipingPropertyFileSnitch`
+- `cassandra-env.sh` comendar la ultima linea y agregar al final `JVM_OPTS="$JVM_OPTS -Dcassandra.ignore_dc=true -Dcassandra.ignore_rack=true"`
+
+Reiniciar los contenedores.
+
+### Crear KEYSPACE
+
+```sql
+CREATE KEYSPACE ks_cancionero
+WITH REPLICATION = {
+'class' : 'SimpleStrategy', 'QUITO' : 1 , 'GUAYAQUIL' : 1};
+```
+
+### Comandos
 
 - Inspeccionar puerto docker
 
 `docker inspect cass_seed`
 IPAddress: ipdel servicio en docker
 
-`docker run -d --name cass1 -e CASSANDRA_SEEDS=IPAddress cassandra`
 `docker exec -it cass1 bash`
 
 - Entrar terminal cassandra
@@ -48,14 +69,6 @@ IPAddress: ipdel servicio en docker
   `nodetool getendpoints nombre_keyspace nombre_tabla nombre_pk`
 
 `docker run -d --name cass1`
-
-## Keyspace
-
-```sql
-CREATE KEYSPACE ks_cancionero
-WITH REPLICATION = {
-'class' : 'SimpleStrategy', 'replication_factor' : 2};
-```
 
 ## Crear tabla
 
