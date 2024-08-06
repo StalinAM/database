@@ -15,7 +15,7 @@ docker volume create --name=vol2
 ```
 
 ```bash
-docker run -d --name node_sedd -v vol1:/etc/cassandra -e CASSANDRA_DC=QUITO -e CASSANDRA_RACK=rack1 -p 9042:9042 -p 7000:7000 -p 7001:7001 cassandra
+docker run -d --name node_seed -v vol1:/etc/cassandra -e CASSANDRA_DC=QUITO -e CASSANDRA_RACK=rack1 -p 9042:9042 -p 7000:7000 -p 7001:7001 cassandra
 ```
 
 ```bash
@@ -34,10 +34,21 @@ Reiniciar los contenedores.
 
 ### Crear KEYSPACE
 
+- Solo sin modificar datacenter
+
+```sql
+CREATE KEYSPACE ks_cancioenro
+  WITH REPLICATION = {
+   'class' : 'SimpleStrategy',
+   'replication_factor' : 1
+  };
+```
+
+- Solo con distintos datacenter
+
 ```sql
 CREATE KEYSPACE ks_cancionero
-WITH REPLICATION = {
-'class' : 'SimpleStrategy', 'QUITO' : 1 , 'GUAYAQUIL' : 1};
+    WITH REPLICATION = {'class':'NetworkTopologyStrategy', 'GUAYAQUIL' : 1, 'CUENCA' : 1};
 ```
 
 ### Comandos
